@@ -8,7 +8,7 @@
     <img src="images/map.webp" alt="Logo" width="150" height="100">
   </a>
 
-<h3 align="center">sql-challenge</h3>
+<h3 align="center">Project 3</h3>
 
   <p align="center">
     Project 3 (We can call this something more specific)
@@ -80,7 +80,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Installation
  
-1. Install "PostgreSQL" throught this link https://www.postgresql.org/download/
+1. Install "PostgreSQL" through this link https://www.postgresql.org/download/
 
 2. Select your operating system.
 
@@ -103,14 +103,14 @@ To get a local copy up and running follow these simple example steps.
    ```js
    shipment
    ```
-3. Right click on the sql-challenge database and click on `Query tool`
+3. Right click on the shipment database and click on `Query tool`
    
 4. Within the Query Tool, open and run file called `PGAdmin_table_schema.sql` located
    ```js
    Where_you_cloned_the_repo + \PGAdmin_table_schema.sql
    ```
 
-    You now have your tables and columns created. To populate the tables we will run a couple of Jupyter notebooks.
+    You now have your tables and columns created. Next we will populate these tables with data.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -122,7 +122,7 @@ To get a local copy up and running follow these simple example steps.
 
 1. Create a python file called `config.py` and save it in the folder "SQL-challenge".
 
-2. Within the get_pass.py copy and paste the code below. 
+2. Within the config.py copy and paste the code below. 
 
 ```
 protocol = 'postgresql'
@@ -142,7 +142,7 @@ database_name = 'shipment'  #Make sure this is the same name database name as th
 
 6. Refresh and clear the kernal. Click on "Run all"
 
-The end result will display the data that has just been read into the SQL tables
+The end result will display the data that has just been read into the shipment database.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
