@@ -25,10 +25,10 @@ Base = automap_base()
 # reflect the tables
 Base.prepare(engine, reflect=True)
 
-# # #Save references to the measurement and station tables in the database
-# SA3_table = Base.classes.sa3_table
-# Postcodes = Base.classes.australian_postcodes
-# Shipments = Base.classes.shipment_table
+# #Save references to the measurement and station tables in the database
+SA3_table = Base.classes.sa3_table
+Postcodes = Base.classes.australian_postcodes
+Shipments = Base.classes.shipment_table
 
 #################################################
 app = Flask(__name__)
@@ -40,40 +40,45 @@ app = Flask(__name__)
 def home():
     r = engine.execute("""SELECT postcode FROM australian_postcodes""")
 
+    all_postcodes = []
+
+    for postcode in r:
+        postcode_dict = {}
+        postcode_dict["postcode"] = postcode
+        all_postcodes.append(postcode_dict)
 
 
-    return r.fetchall()
+    return f"My data is {all_postcodes}"
 
 
-# # Create a route that queries precipiation levels and dates and returns a dictionary using date as key and precipation as value
-# @app.route("/api/v1.0/precipitation")
-# def precipitation():
-#     # Create our session (link) from Python to the DB
-#     session = Session(engine)
+# Create a route that queries precipiation levels and dates and returns a dictionary using date as key and precipation as value
+@app.route("/api/sa3")
+def precipitation():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
 
-#     """Return a list of precipitation (prcp)and date (date) data"""
+    """Return a list of precipitation (prcp)and date (date) data"""
     
-#     # Create new variable to store results from query to Measurement table for prcp and date columns
-#     precipitation_query_results = session.query(Measurement.prcp, Measurement.date).all()
+    # Create new variable to store results from query to Measurement table for prcp and date columns
+    sa3_data = session.query(SA3_table.sa3).all()
 
-#     # Close session
-#     session.close()
+    # Close session
+    session.close()
 
-#     # Create a dictionary from the row data and append to a list of all_passengers
-#         # 1. Create an empty list of precipitation query values 
-#         # 2. Create for loop to iterate through query results (precipitation_query_results) 
-#         # 3. Create dictionary with key "precipitation" set to prcp from precipitation_query_results and key "date" to date from precipitation_query_results
-#         # 4. Append values from precipitation_dict to your original empty list precipitation_query_values 
-#         # 5. Return JSON format of your new list that now contains the dictionary of prcp and date values to your browser
+    # Create a dictionary from the row data and append to a list of all_passengers
+        # 1. Create an empty list of precipitation query values 
+        # 2. Create for loop to iterate through query results (precipitation_query_results) 
+        # 3. Create dictionary with key "precipitation" set to prcp from precipitation_query_results and key "date" to date from precipitation_query_results
+        # 4. Append values from precipitation_dict to your original empty list precipitation_query_values 
+        # 5. Return JSON format of your new list that now contains the dictionary of prcp and date values to your browser
     
-#     precipitaton_query_values = []
-#     for prcp, date in precipitation_query_results:
-#         precipitation_dict = {}
-#         precipitation_dict["precipitation"] = prcp
-#         precipitation_dict["date"] = date
-#         precipitaton_query_values.append(precipitation_dict)
+    sa3_values = []
+    for row in sa3_data:
+        sa3_dict = {}
+        sa3_dict["SA3_ID"] = row
+        sa3_values.append(sa3_dict)
 
-#     return jsonify(precipitaton_query_values) 
+    return jsonify(sa3_values) 
 
 # # Create a route that returns a JSON list of stations from the database
 # @app.route("/api/v1.0/stations")
