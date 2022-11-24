@@ -38,17 +38,7 @@ app = Flask(__name__)
 # Create root route
 @app.route("/")
 def home():
-    r = engine.execute("""SELECT postcode FROM australian_postcodes""")
-
-    all_postcodes = []
-
-    for postcode in r:
-        postcode_dict = {}
-        postcode_dict["postcode"] = postcode
-        all_postcodes.append(postcode_dict)
-
-
-    return f"My data is {all_postcodes}"
+    return render_template("index.html")
 
 
 # Create a route that queries precipiation levels and dates and returns a dictionary using date as key and precipation as value
