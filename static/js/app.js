@@ -1,5 +1,7 @@
 // ----------------------- Test Map ---------------------------
 
+console.log("Testing connection")
+
 // Creating our initial map object:
 // We set the longitude, latitude, and starting zoom level.
 let myMap = L.map("map", {
