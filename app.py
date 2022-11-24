@@ -65,7 +65,7 @@ def precipitation():
     sa3_values = []
     for row in sa3_data:
         sa3_dict = {}
-        sa3_dict["SA3_ID"] = row
+        sa3_dict["SA3_ID"] = row[0]
         sa3_values.append(sa3_dict)
 
     return jsonify(sa3_values) 
@@ -83,7 +83,7 @@ def site():
     sites = []
     for row in site_list:
         site_dict = {}
-        site_dict["Site"] = row
+        site_dict["Site"] = row[0]
         sites.append(site_dict)
 
     return jsonify(sites)
