@@ -19,7 +19,8 @@ CREATE TABLE "australian_postcodes" (
 );
 
 CREATE TABLE "shipment_table" (
-	"smpPlantID" VARCHAR(10)
+	id SERIAL PRIMARY KEY
+	,"smpPlantID" VARCHAR(10)
 	,"smlCreatedDate" VARCHAR(100)
 	,"smlShipmentID" INT
 	,"smlShipmentLineID" INT
