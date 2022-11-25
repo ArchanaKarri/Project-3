@@ -1,13 +1,112 @@
 // Get the samples.json endpoint
-const url = "http://127.0.0.1:5000/api/sa3";
 
-d3.json(url).then(function(data) {
-  console.log(data)
-});
+const mainUrl = "http://127.0.0.1:5000/main";
+
+
+//-----------------------------Function to populate the initial page---------------------------------//
+
+function init() {
+  d3.json(mainUrl).then(function(data) {
+    ids(data.Sites);
+    addPie(data.Pie, data.Sites[0]);
+    addBar(data.Bar, data.Sites[0]);
+  });
+}
+//--------------------------------------------------------------//
+
+
+
+//-----------------------------Function to populate the site list of Id's---------------------------------//
+
+function ids(data) {
+
+  // Iterate through all inputed data
+  for (let i = 0; i < data.length; i++) {
+
+    // set variable to create option element
+    let added = document.createElement('option');
+
+    // Set location of the new element as a variable
+    let dataset = document.getElementById('selDataset');
+
+    // though each iteration grab the data and save as value and html and then append to the location
+    added.value = data[i];
+    added.innerHTML = data[i];
+    dataset.append(added);
+  };
+}
+//--------------------------------------------------------------//
+
+
+
+// ----------------------- Function to add the Pie chart to index.html ---------------------------  
+function addPie(piedata, id) {
+
+  // creating empty variables
+  let label = [];
+  let value = [];
+  let colour = [];
+
+  // Looping through data to find the site that matches
+  for (let i = 0; i < piedata.length; i++) {
+    if (piedata[i].site == id){
+      label = piedata[i].Products;
+      value = piedata[i].units;
+      for (let i = 0; i < label.length; i++) {
+        colour.push(getColor(label[i]));
+    }}};
+
+  // Set pie data based on the info from a specific site
+  var data = [{
+     type: "pie",
+     values: value,
+     labels: label,
+     title: {text: `Site: ${id}`, 
+     font: {
+       size: 20,
+       color: 'black'
+     }},
+     marker: {
+      colors: colour
+    },
+     hole: 0.4,
+     textinfo: "label+percent",
+     insidetextorientation: "radial"
+   }]
+  
+   // Apply layout parameters
+   var layout = [{
+     height: 700,
+     width: 700
+    }]
+
+    let configPie = {responsive: true}
+
+    Plotly.newPlot('pie', data, layout, configPie)
+  };
+//--------------------------------------------------------------//
+
+
+
+//-----------------------------Function to be run when id has been changed and run functions using new id----------------------------------//
+  
+function optionChanged(id) {
+
+  let currentId = id
+
+  // Fetch the JSON data using url and run applicable functions          
+    d3.json(mainUrl).then(function(data) {
+      updatePie(data.Pie, currentId);
+      addBar(data.Bar, currentId);
+})};
+
+//--------------------------------------------------------------//
+
+
 
 // ----------------------- Test Map ---------------------------
 
-console.log("Testing connection")
+
 
 // Creating our initial map object:
 // We set the longitude, latitude, and starting zoom level.
@@ -32,36 +131,21 @@ let myMap = L.map("map", {
   // Binding a popup to our marker
   marker.bindPopup("Hello There!");
 
+//--------------------------------------------------------------//
 
-// ----------------------- Test Bar ---------------------------  
-var trace1 = {
-    x: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    y: [20, 14, 25, 16, 18, 22, 19, 15, 12, 16, 14, 17],
-    type: 'bar',
-    name: 'Primary Product',
-    marker: {
-      color: 'rgb(49,130,189)',
-      opacity: 0.7,
-    }
-  };
+
+
+// ----------------------- Function to add the Bar chart to index.html ---------------------------  
+
+function addBar(bardata, id) {
   
-  var trace2 = {
-    x: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    y: [19, 14, 22, 14, 16, 19, 15, 14, 10, 12, 12, 16],
-    type: 'bar',
-    name: 'Secondary Product',
-    marker: {
-      color: 'rgb(204,204,204)',
-      opacity: 0.5
-    }
-  };
-  
-  var data = [trace1, trace2];
-  
+
+  let data = collectBarData(bardata, id);
+
   var layout = {
-    title: '2013 Sales Report',
+    title: 'CMTP',
     xaxis: {
-      tickangle: -45
+      tickangle: -90
     },
     barmode: 'group'
   };
@@ -70,21 +154,98 @@ let config = {responsive: true}
 
 Plotly.newPlot("bar", data, layout, config);
 
-// ----------------------- Test pie ---------------------------  
+};
 
-var data = [{
-    type: "pie",
-    values: [2, 3, 4, 4],
-    labels: ["Wages", "Operating expenses", "Cost of sales", "Insurance"],
-    textinfo: "label+percent",
-    insidetextorientation: "radial"
-  }]
+//--------------------------------------------------------------//
+
+
+
+// ----------------------- Function to update the Pie chart ---------------------------  
+function updatePie(piedata, id) {
+
+  // creating empty variables
+  let label = [];
+  let value = [];
+  let colour = [];
+
+  // Looping through data to find the site that matches
+  for (let i = 0; i < piedata.length; i++) {
+    if (piedata[i].site == id){
+      label = piedata[i].Products;
+      value = piedata[i].units;
+      for (let i = 0; i < label.length; i++) {
+        colour.push(getColor(label[i]));
+    }}};
+
+  let marker = {
+      colors: colour
+    };
+
+  // Update the title text
+  let title = {text: `Site: ${id}`, 
+     font: {
+       size: 20,
+       color: 'black'
+     }}
   
-  var layout = [{
-    height: 700,
-    width: 700
-  }]
+     // Restyle pie chart
+    Plotly.restyle("pie", 'values', [value]);
+    Plotly.restyle("pie", 'labels', [label]);
+    Plotly.restyle("pie", 'title', [title]);
+    Plotly.restyle("pie", 'marker', [marker]);
+  };
+//--------------------------------------------------------------//
 
-  let configPie = {responsive: true}
 
-  Plotly.newPlot('pie', data, layout, configPie)
+
+//---------------------------------Function to Collect and Return Bar data specific to site selected-----------------------------//
+
+function collectBarData(data, id) {
+  // Initialize empty arrays 
+  var barData = [];
+
+
+  // Looping through data to find the id that matches
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].site == id){
+
+      // store id's data in dedicated arrays
+      let siteDate  = data[i].Data;
+      for (let i = 0; i < siteDate.length; i++) {
+        if (siteDate[i].Period != ""){
+          var trace = {
+            x: siteDate[i].Period,
+            y: siteDate[i].Values,
+            type: 'bar',
+            name: siteDate[i].Product,
+            marker: {
+              color: getColor(siteDate[i].Product),
+              opacity: 0.7,
+            }
+          };
+          barData.push(trace);
+        }};
+    };
+  };
+
+  return(barData);
+ }
+//--------------------------------------------------------------//
+
+
+
+//---------------------------------Function to get colour -----------------------------//
+function getColor(d) {
+  return d == "BED" ? '#8dd3c7' :
+         d == "BINS"  ? '#bc80bd' :
+         d == "BULK"  ?  '#fdb462':
+         d == "CARD"  ? '#fb8072' :
+         d == "CASE"  ? '#80b1d3' :
+         d == "PAL"   ? '#bebada':
+         d == "PAL2"   ? '#b3de69':
+         d == "PEN"   ? '#fccde5':
+         '#d9d9d9';
+};
+//--------------------------------------------------------------//
+
+init();
