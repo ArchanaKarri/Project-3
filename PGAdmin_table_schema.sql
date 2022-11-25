@@ -1,6 +1,6 @@
-drop table sa3_table;
-drop table australian_postcodes;
-drop table shipment_table;
+-- drop table sa3_table;
+-- drop table australian_postcodes;
+-- drop table shipment_table;
 
 CREATE TABLE "sa3_table" (
 	"sa3" INT,
@@ -21,14 +21,14 @@ CREATE TABLE "australian_postcodes" (
 CREATE TABLE "shipment_table" (
 	id SERIAL PRIMARY KEY
 	,"smpPlantID" VARCHAR(10)
-	,"smlCreatedDate" VARCHAR(100)
+	,"smlCreatedDate" date
 	,"smlShipmentID" INT
 	,"smlShipmentLineID" INT
 	,"smlPartID" INT
 	,"smlDescription" VARCHAR(50)
 	,"smlPartRevisionID" VARCHAR(20)
 	,"smpCustomerOrganizationID" VARCHAR(20)
-	,"smpShipDate" VARCHAR(100)
+	,"smpShipDate" date
 	,"smpShipOrganizationID" VARCHAR(20)
 	,"impPartGroupID" VARCHAR(20)
 	,"cmlOrganizationID" VARCHAR(20)
@@ -38,6 +38,9 @@ CREATE TABLE "shipment_table" (
 	,"cmlState" VARCHAR(20)
 	,"cmlPostCode" INT
 	,"quantityShipped" FLOAT
+	,"ShipPeriod" VARCHAR(20)
+	,"ShipYear" VARCHAR(20)
+	,"ShipMonth" VARCHAR(20)
 );
 
 SELECT * FROM SA3_table;
