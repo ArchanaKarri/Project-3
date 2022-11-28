@@ -59,14 +59,17 @@
 <!-- ------------- ABOUT THE PROJECT ------------- -->
 ## About The Project
 
-Breif overview of the project
+The data set we are using for this project contains the delivery information for a manufacturing company. We are attempting to identify if there are any trends with product type and its delivery. The data has multiple sites and is across a financial year. We are hoping we may be able to find seasonal trends and/or areas that are high users of certain products.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ---- Why this topic? ---- -->
 ## Why this topic?
 
-Sentence or two on why we chose this topic
+When looking into our project topic we wanted to keep the data specific to the industries that we are familiar with. We have decided to use an output from a company that one of us is currently employed (With permission). This way we are able to use real data, specific to one member, to generate useful and meaningful visuals that can be used in real world situations.
+ 
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -152,6 +155,16 @@ The end result will display the data that has just been read into the shipment d
 <!-- ------------- running-app.py ------------- -->
 ## Running-app
 To get a local copy up and running follow these simple example steps.
+Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployme
+nt.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 953-404-923
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 <br>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
