@@ -5,7 +5,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/ArchanaKarri/Project-3.git">
-    <img src="images/map.webp" alt="Logo" width="150" height="100">
+    <img src="images/maps.png" alt="Logo" width="150" height="100">
   </a>
 
 <h3 align="center">Project 3</h3>
@@ -155,17 +155,7 @@ The end result will display the data that has just been read into the shipment d
 <!-- ------------- running-app.py ------------- -->
 ## Running-app
 To get a local copy up and running follow these simple example steps.
-Serving Flask app "app" (lazy loading)
- * Environment: production
-   WARNING: This is a development server. Do not use it in a production deployme
-nt.
-   Use a production WSGI server instead.
- * Debug mode: on
- * Restarting with watchdog (windowsapi)
- * Debugger is active!
- * Debugger PIN: 953-404-923
- * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-<br>
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -176,10 +166,18 @@ nt.
 
 list of all the dependencies that will need to be installed
 
+```
 pip install SQLAlchemy
+```
+```
 pip install numpy
+```
+```
 pip install Flask
+```
+```
 pip install DateTime
+```
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -205,16 +203,16 @@ Our results are stored in the pictorial representation
  
  Bar chart</br>
 <a href="Bar chart"> 
-	<img src="Images/barplot.png" alt="Bar chart" width="100" height="132"/> 
+	<img src="Images/barplot.png" alt="Bar chart" width="500" height="300"/> 
 </a> </br>
  Pie chart</br>
  <a href="Pie chart"> 
-	<img src="Images/pieplot.png" alt="Pie chart" width="100" height="132"/> 
+	<img src="Images/pieplot.png" alt="Pie chart" width="500" height="500"/> 
 </a> </br>
 
  Maps </br>
  <a href="Maps"> 
-	<img src="Images/Maps.png"  alt="Map" width="100" height="132"/> 
+	<img src="Images/maps.png"  alt="Map2" width="500" height="300"/> 
 </a></br>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
