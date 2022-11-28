@@ -5,7 +5,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/ArchanaKarri/Project-3.git">
-    <img src="images/maps.png" alt="Logo" width="150" height="100">
+    <img src="images/map.webp" alt="Logo" width="150" height="100">
   </a>
 
 <h3 align="center">Project 3</h3>
