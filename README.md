@@ -16,7 +16,7 @@
     <a href="https://github.com/ArchanaKarri/Project-3.git"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="ADD LINK TO PRESENTATION">View Presentation</a>
+    <a href="https://github.com/ArchanaKarri/Project-3/Project-03Presentation.pptx">View Presentation</a>
     ·
     <a href="https://github.com/ArchanaKarri/Project-3/issues">Report Bug</a>
   </p>
@@ -163,6 +163,12 @@ To get a local copy up and running follow these simple example steps.
 
 list of all the dependencies that will need to be installed
 
+pip install SQLAlchemy
+pip install numpy
+pip install Flask
+pip install DateTime
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -172,13 +178,31 @@ list of all the dependencies that will need to be installed
 
 steps to run app.py
 
+The most basic and easy way to run a Python script is by using the python command. You need to open a command line and type the word python followed by the path to your script file, like this:
+
+python app.py
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- -----results---- -->
 ### Results
 
-A few pics on the end results
+Our results are stored in the pictorial representation
+ 
+ Bar chart</br>
+<a href="Bar chart"> 
+	<img src="Images/barplot.png" alt="Bar chart" width="100" height="132"/> 
+</a> </br>
+ Pie chart</br>
+ <a href="Pie chart"> 
+	<img src="Images/pieplot.png" alt="Pie chart" width="100" height="132"/> 
+</a> </br>
+
+ Maps </br>
+ <a href="Maps"> 
+	<img src="Images/Maps.png"  alt="Map" width="100" height="132"/> 
+</a></br>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -187,7 +211,36 @@ A few pics on the end results
 <!-- ------------- Analysis ------------- -->
 ## Analysis
 
-Enter analysis
+For our project we used the data from multiple sites located across Australia. Using the code, we are able to retrieve the data from the database and visualise them to identify any patterns or trends.
+For that purpose ,we used  different visual summary techniques to represent our data.
+1. Summary information</br>
+<p>For a selected site from the list, this Summary info label will display the Highest Delivered Product type and Highest Delivered Part. Also we used anime.js to display the data
+
+</p>
+2.  Bar chart</br>
+<p>For a selected site from the list, bar chart is used to analyse the data for a particular site across a certain period of time.
+For instance you can understand that the total sales are low during the December period. This may be due to business closures during the holidays.
+
+June- There is a increase in the total number of sales over the past few months. This may be to use the budget allocation for the current financial year etc.
+</p></br>
+3.  Pie chart</br>
+<p>For a selected site from the list, pie chart is used to analyse the data for a particular site and the sales that happened for each different item over the total sales.
+
+In this example here, Cardboard contributed to majority sales while PAL2 is the least popular item.
+
+</p></br>
+
+4.Maps
+ <p>For a selected site from the list, Maps are used to analyse the data for a particular site and the distribution of products across different geographical locations
+In this example here, from Mildura the more number of units are delivered to this area shown in RED from the colour scale shown BLUE being LOW and RED being HIGH.
+</p></br>
+
+
+
+
+
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
